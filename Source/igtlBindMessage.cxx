@@ -27,6 +27,7 @@ BindMessageBase::BindMessageBase():
   MessageBase()
 {
   Init();
+//
 }
 
 
