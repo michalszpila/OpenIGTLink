@@ -379,6 +379,9 @@ int ReceivePoint(igtl::Socket * socket, igtl::MessageHeader * header)
 	  //std::cerr << "AAA dasd as"<< std::endl;
       std::cerr << "================================" << std::endl;
 
+	  igtl::Sleep(500);
+
+
 	  pos[0] = -pos[0];
 	  pos[1] = -pos[1];
 	  pos[2] = -pos[2];
@@ -390,11 +393,14 @@ int ReceivePoint(igtl::Socket * socket, igtl::MessageHeader * header)
       pointMsg->SetDeviceName("PointSender");
 
 	  pointMsg->AddPointElement(pointElement);
+	  pointMsg->Pack();
 	  socket->Send(pointMsg->GetPackPointer(), pointMsg->GetPackSize());
 
 
       }
     }
+
+  socket->CloseSocket();
 
   return 1;
 }
